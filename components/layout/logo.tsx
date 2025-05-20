@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Logo() {
   return (
     <Link href="/" className="flex items-center space-x-2 select-none">
-      <div className="relative w-16 h-16 select-none pointer-events-none">
+      <div className="relative w-12 h-12 select-none pointer-events-none">
         <Image
           src="/logo/logo.png"
           alt="Elevenstoic Logo"
@@ -14,7 +14,7 @@ export default function Logo() {
           unselectable="on"
         />
       </div>
-      <span className="font-heading font-bold text-3xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300">
+      <span className="font-heading font-bold text-xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300">
         Elevenstoic
       </span>
     </Link>

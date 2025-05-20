@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,8 @@ import Logo from "@/components/layout/logo"
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,26 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        navRef.current && 
+        !navRef.current.contains(event.target as Node) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpen])
 
   return (
     <header
@@ -58,7 +80,7 @@ export default function Header() {
             className="relative group ml-4"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-            <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank" rel="noopener noreferrer">
+            <a href="https://copecart.com/products/e41a84c4/checkout " target="_blank" rel="noopener noreferrer">
               <Button
                 size="sm"
                 className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold border border-blue-700/50"
@@ -71,6 +93,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
+          ref={menuButtonRef}
           className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -83,6 +106,7 @@ export default function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={navRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -112,7 +136,7 @@ export default function Header() {
                 className="relative group"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-                <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank" rel="noopener noreferrer">
+                <a href="https://copecart.com/products/e41a84c4/checkout " target="_blank" rel="noopener noreferrer">
                   <Button
                     className="w-full relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold border border-blue-700/50"
                     onClick={() => setIsOpen(false)}

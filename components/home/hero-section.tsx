@@ -194,7 +194,7 @@ export default function HeroSection() {
             </Button>
           </div> */}
 
-          <div className="mt-6 md:mt-8">
+          {/* <div className="mt-6 md:mt-8">
             <Button
               size="lg"
               className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 
@@ -202,7 +202,19 @@ export default function HeroSection() {
             >
               Unlock Your System Now →
             </Button>
+            <span>Instant delivery. No subscriptions.</span>
+          </div> */}
+
+          <div className="mt-6 md:mt-8">
+            <Button
+              size="lg"
+              className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-blue-500/40 hover:shadow-blue-500/70"
+            >
+              Unlock Your System Now →
+            </Button>
+            <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
           </div>
+
 
           {/* Social Proof */}
           <div className="flex flex-col items-center space-y-4 mt-6">
