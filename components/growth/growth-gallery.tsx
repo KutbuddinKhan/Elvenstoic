@@ -248,7 +248,7 @@ export default function GrowthJourney() {
                         <span>Our journey from 0 to 1M+ followers</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white uppercase">
                         Our <span className="text-gradient">Growth</span> Journey
                     </h1>
                     <p className="text-xl md:text-2xl text-blue-100/70 mb-12 max-w-3xl mx-auto">

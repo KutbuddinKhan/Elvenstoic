@@ -101,7 +101,7 @@ export default function HeroSection() {
               </span>
             </h1>
             <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mx-auto">
-              The exact system behind Elevenstoic's 1M+ followers – now in your hands to grow, monetize and stand out as a one-man brand.
+              The system behind Elevenstoic&apos;s 1M+ success — now in your hands.
             </p>
           </div>
 
@@ -205,19 +205,32 @@ export default function HeroSection() {
             <span>Instant delivery. No subscriptions.</span>
           </div> */}
 
-          <div className="mt-6 md:mt-8">
-            <Button
-              size="lg"
-              className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-blue-500/40 hover:shadow-blue-500/70"
+          <div className="flex justify-center mt-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative group"
             >
-              Unlock Your System Now →
-            </Button>
-            <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+              <a
+                href="https://copecart.com/products/e41a84c4/checkout"
+                target="_blank"
+              >
+                <Button
+                  size="lg"
+                  className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
+                >
+                  Unlock Your System Now →
+                </Button>
+              </a>
+            </motion.div>
           </div>
+                <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
+
 
 
           {/* Social Proof */}
-          <div className="flex flex-col items-center space-y-4 mt-6">
+          <div className="flex flex-col items-center space-y-4 mt-5">
             {/* Avatar Stack with Enhanced Interaction */}
             <div className="flex -space-x-3 relative group">
               {[1, 2, 3, 4].map((i) => (
@@ -245,7 +258,7 @@ export default function HeroSection() {
 
             {/* Rating Section with Animated Stars */}
             <div className="flex flex-col items-center space-y-2">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 -mt-2">
                 {[...Array(5)].map((_, i) => (
                   <motion.svg
                     key={i}

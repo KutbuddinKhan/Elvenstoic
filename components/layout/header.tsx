@@ -28,7 +28,7 @@ export default function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         isOpen &&
-        navRef.current && 
+        navRef.current &&
         !navRef.current.contains(event.target as Node) &&
         menuButtonRef.current &&
         !menuButtonRef.current.contains(event.target as Node)

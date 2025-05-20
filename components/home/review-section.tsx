@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
+import { testimonials } from "@/data/review-section";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -23,39 +24,7 @@ export default function ReviewSection() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const testimonials = [
-    {
-      name: "Ethan Diaz",
-      handle: "intredis",
-      image: "/brand-profile-pic/Intredis.jpg",
-      followers: "41k+ followers",
-      quote: `Before this system, I had no page, no direction, and no idea how to stand out. I've built a signature sports brand, developed my own unique style, and created content that people instantly recognize. This blueprint gave me the exact roadmap I needed.`,
-    },
-    {
-      name: "Richard Brunsch",
-      handle: "elevenstoic",
-      image: "/brand-profile-pic/Elevenstoic.JPG",
-      followers: "1M+ followers",
-      subtext: "Founder of Elevenstoic & other 100K+ pages",
-      quote: `Everything I've learnt in 2+ years of growing past 1M followers & 5 figure months, packaged into 1 product for you to steal for yourself!`,
-    },
-    {
-      name: "Valentino Tchung",
-      handle: "byhopelesscore",
-      image: "/brand-profile-pic/byhopelesscore.jpg",
-      followers: "140k+ followers",
-      subtext: "Founder of ByHopelessCore",
-      quote: `In just two months of using the blueprint and system from the founder of Elevenstoic, I've generated 100+ million views, went from 0 to over 85k+ followers and set myself up to scale beyond five figures this year. It's literally insane how fast things can change nowadays…`,
-    },
-    {
-      name: "John Basler",
-      handle: "mentalciety",
-      image: "/brand-profile-pic/Mentalsciety.jpg",
-      followers: "39k+ followers",
-      subtext: "Founder of Mentalciety",
-      quote: `Went from 0 to 39k+ and made my first real money online. The System just works - no fluff, just values.`,
-    },
-  ];
+  
 
   // Handle touch events for mobile swiping with improved sensitivity
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -354,11 +323,10 @@ export default function ReviewSection() {
               <button
                 key={idx}
                 onClick={() => goToSlide(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  currentSlide === idx
-                    ? "bg-blue-500 w-6"
-                    : "bg-blue-500/30 hover:bg-blue-500/50 w-2.5"
-                }`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${currentSlide === idx
+                  ? "bg-blue-500 w-6"
+                  : "bg-blue-500/30 hover:bg-blue-500/50 w-2.5"
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
                 disabled={isTransitioning}
               />
@@ -482,18 +450,18 @@ export default function ReviewSection() {
       </div>
 
       {/* CTA button */}
-      <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
+      {/* <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
         <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="relative group w-full sm:w-auto"
-          >
-            {/* Glowing background */}
-            {/* <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur-md opacity-75 group-hover:opacity-100 transition duration-300"></div> */}
+          > */}
+      {/* Glowing background */}
+      {/* <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur-md opacity-75 group-hover:opacity-100 transition duration-300"></div> */}
 
-            {/* Actual button */}
-            <a
+      {/* Actual button */}
+      {/* <a
               href="https://copecart.com/products/e41a84c4/checkout"
               target="_blank"
               rel="noopener noreferrer"
@@ -508,7 +476,40 @@ export default function ReviewSection() {
             Get Ahead in Just 6 Hours
           </span>
         </div>
+      </div> */}
+
+      <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
+        <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative group"
+          >
+            {/* Glowing background */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+
+            {/* Actual button */}
+            <a
+              href="https://copecart.com/products/e41a84c4/checkout"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
+              >
+                Get The Blueprint Now →
+              </Button>
+            </a>
+          </motion.div>
+
+          {/* Text below the button */}
+          <span className="text-sm text-blue-200 font-medium tracking-wide">
+            Get Ahead in Just 6 Hours
+          </span>
+        </div>
       </div>
+
     </section>
   );
 }

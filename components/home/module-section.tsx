@@ -12,6 +12,8 @@ import {
   Code,
   Palette,
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
 // Define module type tags with icons
 const ModuleTag = ({
@@ -40,14 +42,14 @@ const AssetBadge = ({
   type,
 }: {
   type:
-    | "VIDEO"
-    | "PDF"
-    | "TEMPLATES"
-    | "CLIPS"
-    | "TOOLKIT"
-    | "AI PROMPTS"
-    | "MUSIC"
-    | "SFX";
+  | "VIDEO"
+  | "PDF"
+  | "TEMPLATES"
+  | "CLIPS"
+  | "TOOLKIT"
+  | "AI PROMPTS"
+  | "MUSIC"
+  | "SFX";
 }) => {
   const icons = {
     VIDEO: <Play className="w-4 h-4" />,
@@ -249,9 +251,8 @@ export default function ModulesSection() {
               .map((module, index) => (
                 <div
                   key={module.id}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ${
-                    index % 2 === 0 ? "lg:[&>div:first-child]:order-2" : ""
-                  }`}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ${index % 2 === 0 ? "lg:[&>div:first-child]:order-2" : ""
+                    }`}
                 >
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-800 shadow-xl">
                     <div className="relative aspect-video overflow-hidden">
@@ -404,7 +405,7 @@ export default function ModulesSection() {
         </div>
 
         {/* Final CTA */}
-        <div className="text-center pt-16 md:pt-20">
+        {/* <div className="text-center pt-16 md:pt-20">
           <div className="inline-flex items-center gap-2 bg-blue-900/20 border border-blue-700/30 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
             <span className="text-sm font-medium text-blue-300 tracking-wide">
               WHAT'S NEXT?
@@ -420,7 +421,45 @@ export default function ModulesSection() {
           <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-lg">
             Get Instant Access →
           </button>
+        </div> */}
+
+        <div className="text-center pt-16 md:pt-20">
+          <div className="inline-flex items-center gap-2 bg-blue-900/20 border border-blue-700/30 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
+            <span className="text-sm font-medium text-blue-300 tracking-wide">
+              WHAT'S NEXT?
+            </span>
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            Ready to Transform Your Content?
+          </h3>
+          <p className="text-lg text-blue-100/80 max-w-2xl mx-auto mb-8">
+            Join 500+ creators who've already transformed their content with
+            Cinematic Studio.
+          </p>
+
+          {/* Updated Button with Glowing Effect */}
+          <div className="flex justify-center mt-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+              <a
+                href="https://copecart.com/products/e41a84c4/checkout"
+                target="_blank"
+              >
+                <Button
+                  size="lg"
+                  className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
+                >
+                   Get Instant Access →
+                </Button>
+              </a>
+            </motion.div>
+          </div>
         </div>
+
       </div>
     </section>
   );
