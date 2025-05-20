@@ -111,7 +111,7 @@ export default function AboutPageClient() {
                     </div>
 
                     <h1 className="about-title text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold tracking-tighter uppercase">
-                        The <span className="text-gradient">Elevenstoic</span> Story
+                        The <span className="text-gray-200 bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300 drop-shadow-[0_2px_2px_rgba(255,255,255,0.3)]">Elevenstoic</span> Story
                     </h1>
 
                     <p className="about-subtitle mt-3 text-xm md:text-xl text-blue-100/70 max-w-3xl mx-auto">
@@ -189,7 +189,7 @@ export default function AboutPageClient() {
                                 ].map((person, index) => (
                                     <div
                                         key={index}
-                                        className="overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2 rounded-lg border border-blue-400/30 shadow-md"
+                                        className="overflow-hidden  p-2 rounded-lg  shadow-md"
                                     >
                                         <div className="aspect-square hover:scale-105 transition-transform duration-300 relative rounded-md overflow-hidden">
                                             <Image
@@ -223,7 +223,7 @@ export default function AboutPageClient() {
                             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0f_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10 z-0 rounded-xl"></div>
                             <div className="absolute inset-0 bg-noise opacity-5 z-0 rounded-xl"></div>
                             <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-800/20 rounded-full blur-3xl z-0"></div>
-                            <div className="absolute bottom-0 right-0 w-72 h-72 bg-gold/20 rounded-full blur-3xl z-0"></div>
+                            {/* <div className="absolute bottom-0 right-0 w-72 h-72 bg-gold/20 rounded-full blur-3xl z-0"></div> */}
 
                             {/* Masonry container with padding for background visibility */}
                             <div className="relative z-10 p-6 bg-slate-900/40 backdrop-blur-sm rounded-xl border border-blue-900/30 shadow-lg shadow-blue-900/20">
@@ -238,7 +238,7 @@ export default function AboutPageClient() {
                                                 className="relative overflow-hidden cursor-pointer"
                                                 onClick={() => setSelectedImage(image.id)}
                                             >
-                                                <div className="rounded-xl overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2 border border-blue-400/30 shadow-md">
+                                                <div className="rounded-xl overflow-hidden  p-2 border border-blue-400/30 shadow-md">
                                                     <div className="relative rounded-lg overflow-hidden">
                                                         <img
                                                             src={image.src || "/placeholder.svg"}

@@ -88,7 +88,7 @@ export default function InstructorSection() {
             </span>
           </h2>
           <p className="instructor-description mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            700M+ views across Instagram, collaborating with global brands, and
+            1B+ views across Instagram, collaborating with global brands, and
             earning consistently with content that converts.
           </p>
         </div>

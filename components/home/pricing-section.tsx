@@ -26,10 +26,10 @@ const features = [
   "Instant Access To Premium Clip Vault",
   "Instant Access To Creator Monetization Blueprint",
   "Instant Access To Cinematic Toolkit",
-  "Lifetime Updates & Priority Support",
-  "AI Assistant Blueprint",
+  "Instant Access To AI Assistant Blueprint",
   "Access to Creator Community",
   "BONUS: 90 day scale",
+  "Lifetime Updates & Priority Support",
 ];
 
 export default function PricingSection() {

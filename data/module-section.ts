@@ -13,7 +13,7 @@ export const modules = [
       "Techniques to maintain brand identity across all content",
       "Framework for building a brand that resonates with your personality",
     ],
-    assets: ["VIDEO", "PDF", "TEMPLATES"],
+    assets: ["VIDEOS", "PDF", "TEMPLATES"],
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const modules = [
       "Find viral-worthy content ideas in any niche",
       "Our proven process for creating aesthetic posts",
     ],
-    assets: ["VIDEO", "PDF", "TEMPLATES"],
+    assets: ["VIDEOS", "PDF", "TEMPLATES"],
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export const modules = [
       "Complete guide to finding any clip you need",
       "Constantly updated with fresh content",
     ],
-    assets: ["VIDEO", "CLIPS"],
+    assets: ["VIDEOS", "CLIPS"],
   },
   {
     id: 4,
@@ -76,8 +76,9 @@ export const modules = [
       "Attract brand deals and sponsorships",
       "Offer premium services based on your expertise",
     ],
-    assets: ["VIDEO", "PDF", "TEMPLATES"],
+    assets: ["VIDEOS", "PDF", "TEMPLATES"],
   },
+  
   {
     id: 6,
     type: "CORE",
@@ -92,10 +93,24 @@ export const modules = [
       "Step-by-step setup for using GPT as a business partner (incl. example workflows)",
       "Bonus: My personal 'AI Stack' of tools & plugins",
     ],
-    assets: ["VIDEO", "PDF", "AI PROMPTS"],
+    assets: ["VIDEOS", "PDF", "AI PROMPTS"],
   },
   {
     id: 7,
+    type: "CORE",
+    title: "THE CREATOR COMMUNITY",
+    description:
+      "Stay connected. Ask questions. Share your wins. Get instant access to our private chat — where creators exchange ideas, share results and stay in the loop. No pressure to engage. Just a space to grow together.",
+    image: "/images/TheCreatorCommunity.png",
+    features: [
+      "Ask questions & get support",
+      "See how others use the system",
+      "Get notified about updates & drops",
+    ],
+    assets: ["COMMUNITY", "SUPPORT"],
+  },
+  {
+    id: 8,
     type: "LIMITED TIME BONUS",
     title: "THE 90-DAY SCALE SYSTEM",
     description:
@@ -106,7 +121,7 @@ export const modules = [
       "The 90-Day PDF Blueprint",
       "My Delegation Blueprint (how I outsourced editing & scaled output)",
     ],
-    assets: ["VIDEO", "PDF", "TEMPLATES"],
+    assets: ["VIDEOS", "PDF", "TEMPLATES"],
     note: "This bonus is included for a limited time - and only available inside this version of Cinematic Studio.",
   },
 ];

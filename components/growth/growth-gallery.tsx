@@ -129,7 +129,7 @@ export default function GrowthJourney() {
                     </div>
 
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white uppercase">
-                        Our <span className="text-gradient">Growth</span> Journey
+                        Our <span className="text-gray-200 bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300 drop-shadow-[0_2px_2px_rgba(255,255,255,0.3)]">Growth</span> Journey
                     </h1>
                     <p className="text-xl md:text-2xl text-blue-100/70 mb-12 max-w-3xl mx-auto">
                         From zero to one million followers, follow our incredible path to success

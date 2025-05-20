@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { testimonials } from "@/data/review-section";
+import TakeALookInsideSection from "./TakeALookInsideSection";
+import CTASection from "./cta-take-look";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +26,7 @@ export default function ReviewSection() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  
+
 
   // Handle touch events for mobile swiping with improved sensitivity
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -182,6 +184,9 @@ export default function ReviewSection() {
 
       {/* Section Header with animated underline */}
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20">
+        <p className="text-xs text-center text-white/60 font-medium mb-1">
+          Rated #1 in Creative Education
+        </p>
         <div className="inline-flex items-center gap-2 bg-blue-900/20 border border-blue-700/30 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
           <Zap className="w-4 h-4 text-blue-400" />
           <span className="text-sm font-medium text-blue-300 tracking-wide">
@@ -449,46 +454,19 @@ export default function ReviewSection() {
         ))}
       </div>
 
+      {/* Take a Look Inside */}
+      <TakeALookInsideSection images={["take-look-section/Copy of Bildschirmfoto 2025-05-19 um 17.16.32.png", "take-look-section/Copy of Bildschirmfoto 2025-05-20 um 12.34.24.png"]} />
+
       {/* CTA button */}
       {/* <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
         <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="relative group w-full sm:w-auto"
-          > */}
-      {/* Glowing background */}
-      {/* <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur-md opacity-75 group-hover:opacity-100 transition duration-300"></div> */}
-
-      {/* Actual button */}
-      {/* <a
-              href="https://copecart.com/products/e41a84c4/checkout"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-block w-full sm:w-auto"
-            >
-              <button className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                Get The Blueprint Now →
-              </button>
-            </a>
-          </motion.div>
-          <span className="text-sm text-blue-200 font-medium tracking-wide">
-            Get Ahead in Just 6 Hours
-          </span>
-        </div>
-      </div> */}
-
-      <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
-        <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
             className="relative group"
           >
-            {/* Glowing background */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
 
-            {/* Actual button */}
             <a
               href="https://copecart.com/products/e41a84c4/checkout"
               target="_blank"
@@ -503,13 +481,13 @@ export default function ReviewSection() {
             </a>
           </motion.div>
 
-          {/* Text below the button */}
           <span className="text-sm text-blue-200 font-medium tracking-wide">
             Get Ahead in Just 6 Hours
           </span>
         </div>
-      </div>
+      </div> */}
 
+        <CTASection />
     </section>
   );
 }

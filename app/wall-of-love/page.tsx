@@ -109,7 +109,7 @@ export default function FanWallPage() {
           </div>
 
           <h1 className="fanwall-title text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter uppercase">
-            The <span className="text-gradient">Fan</span> Wall
+            The <span className="text-gray-200 bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300 drop-shadow-[0_2px_2px_rgba(255,255,255,0.3)]">Fan</span> Wall
           </h1>
           <p className="fanwall-subtitle mt-6 text-xl md:text-2xl text-blue-100/70 max-w-3xl mx-auto">
             Real messages from our community showing the impact of cinematic content that resonates
@@ -138,7 +138,7 @@ export default function FanWallPage() {
                       className="relative overflow-hidden cursor-pointer"
                       onClick={() => setSelectedImage(index)}
                     >
-                      <div className="rounded-xl overflow-hidden bg-gradient-to-br from-blue/20 to-gold/20 p-2">
+                      <div className="rounded-xl overflow-hidden p-2">
                         <div className="relative rounded-lg overflow-hidden">
                           <div className="relative w-full aspect-auto">
                             <Image
@@ -181,7 +181,7 @@ export default function FanWallPage() {
               className="relative max-w-5xl max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="rounded-xl overflow-hidden bg-gradient-to-br from-blue/20 to-gold/20 p-2">
+              <div className="rounded-xl overflow-hidden  p-2">
                 <div className="relative rounded-lg overflow-hidden">
                   <Image
                     src={fanImages[selectedImage] || "/placeholder.svg"}

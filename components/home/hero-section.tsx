@@ -100,8 +100,8 @@ export default function HeroSection() {
                 Sells & Looks Cinematic.
               </span>
             </h1>
-            <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mx-auto">
-              The system behind Elevenstoic&apos;s 1M+ success — now in your hands.
+            <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mr-8 ml-8">
+              The system behind Elevenstoic&apos;s 1M+ success  Now in your hands.
             </p>
           </div>
 
@@ -225,7 +225,7 @@ export default function HeroSection() {
               </a>
             </motion.div>
           </div>
-                <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
+          <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
 
 
 
@@ -289,9 +289,7 @@ export default function HeroSection() {
                     Trusted by 500+ Brands
                   </span>
                 </div>
-                <p className="text-xs text-center text-white/60 font-medium mt-1">
-                  Rated #1 in Creative Education
-                </p>
+
               </div>
             </div>
           </div>

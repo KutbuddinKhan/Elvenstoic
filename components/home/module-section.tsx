@@ -11,6 +11,7 @@ import {
   Volume2,
   Code,
   Palette,
+  Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "../ui/button";
@@ -43,17 +44,19 @@ const AssetBadge = ({
   type,
 }: {
   type:
-  | "VIDEO"
+  | "VIDEOS"
   | "PDF"
   | "TEMPLATES"
   | "CLIPS"
   | "TOOLKIT"
   | "AI PROMPTS"
   | "MUSIC"
-  | "SFX";
+  | "SFX"
+  | "COMMUNITY"
+  | "SUPPORT";
 }) => {
   const icons = {
-    VIDEO: <Play className="w-4 h-4" />,
+    VIDEOS: <Play className="w-4 h-4" />,
     PDF: <FileText className="w-4 h-4" />,
     TEMPLATES: <Download className="w-4 h-4" />,
     CLIPS: <Film className="w-4 h-4" />,
@@ -61,10 +64,12 @@ const AssetBadge = ({
     "AI PROMPTS": <span className="text-xs">🤖</span>,
     MUSIC: <Music className="w-4 h-4" />,
     SFX: <Volume2 className="w-4 h-4" />,
+    COMMUNITY: <Users className="w-4 h-4" />,
+    SUPPORT: <span className="text-xs">💬</span>,
   };
 
   const colors = {
-    VIDEO: "bg-red-500/10 text-red-400",
+    VIDEOS: "bg-red-500/10 text-red-400",
     PDF: "bg-blue-500/10 text-blue-400",
     TEMPLATES: "bg-green-500/10 text-green-400",
     CLIPS: "bg-purple-500/10 text-purple-400",
@@ -72,6 +77,8 @@ const AssetBadge = ({
     "AI PROMPTS": "bg-teal-500/10 text-teal-400",
     MUSIC: "bg-pink-500/10 text-pink-400",
     SFX: "bg-orange-500/10 text-orange-400",
+    COMMUNITY: "bg-indigo-500/10 text-indigo-400",
+    SUPPORT: "bg-emerald-500/10 text-emerald-400",
   };
 
   return (
@@ -85,8 +92,6 @@ const AssetBadge = ({
 };
 
 export default function ModulesSection() {
-  
-
   return (
     <section className="py-24 md:py-32 bg-slate-950 relative overflow-hidden">
       {/* Subtle Background Elements */}
@@ -128,7 +133,7 @@ export default function ModulesSection() {
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center relative inline-block">
             <span className="relative z-10 px-4">
               CORE{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              <span className="text-white">
                 MODULES
               </span>
             </span>
@@ -211,11 +216,11 @@ export default function ModulesSection() {
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center relative inline-block">
             <span className="relative z-10 px-4">
               BONUS{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-500">
+              <span className="text-white">
                 MODULES
               </span>
             </span>
-            <span className="absolute bottom-1 left-0 w-full h-2 bg-purple-500/20 rounded-full -z-0"></span>
+            <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/20 rounded-full -z-0"></span>
           </h3>
 
           <div className="space-y-16 md:space-y-24">
@@ -295,24 +300,6 @@ export default function ModulesSection() {
         </div>
 
         {/* Final CTA */}
-        {/* <div className="text-center pt-16 md:pt-20">
-          <div className="inline-flex items-center gap-2 bg-blue-900/20 border border-blue-700/30 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
-            <span className="text-sm font-medium text-blue-300 tracking-wide">
-              WHAT'S NEXT?
-            </span>
-          </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-            Ready to Transform Your Content?
-          </h3>
-          <p className="text-lg text-blue-100/80 max-w-2xl mx-auto mb-8">
-            Join 500+ creators who've already transformed their content with
-            Cinematic Studio.
-          </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full shadow-lg">
-            Get Instant Access →
-          </button>
-        </div> */}
-
         <div className="text-center pt-16 md:pt-20">
           <div className="inline-flex items-center gap-2 bg-blue-900/20 border border-blue-700/30 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
             <span className="text-sm font-medium text-blue-300 tracking-wide">

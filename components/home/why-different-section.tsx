@@ -31,9 +31,9 @@ export default function WhyDifferentSection() {
 
           <p className="text-lg md:text-xl text-blue-100/80 max-w-3xl mx-auto leading-relaxed">
             Most courses give you{" "}
-            <strong className="text-blue-300">theories</strong>. Cinematic
+            theories. Cinematic
             Studio gives you{" "}
-            <strong className="text-purple-300">the full system</strong> +
+            the full system +
             high-end resources to grow faster.
           </p>
         </div>

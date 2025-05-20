@@ -117,7 +117,7 @@ export default function CollaborationsPage() {
           </div>
 
           <h1 className="collab-title text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter uppercase">
-            CELEBRITY <span className="text-gradient">COLLABORATIONS</span>
+            CELEBRITY <span className="text-gray-200 bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300 drop-shadow-[0_2px_2px_rgba(255,255,255,0.3)]">COLLABORATIONS</span>
           </h1>
           <p className="collab-subtitle mt-6 text-xl md:text-2xl text-blue-100/70 max-w-3xl mx-auto">
             Discover some of the incredible talent we've collaborated with on Instagram - from influencers to A-list names
@@ -146,7 +146,7 @@ export default function CollaborationsPage() {
                       className="relative overflow-hidden cursor-pointer"
                       onClick={() => setSelectedImage(index)}
                     >
-                      <div className="rounded-xl overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2">
+                      <div className="rounded-xl overflow-hidden  p-2">
                         <div className="relative rounded-lg overflow-hidden">
                           <div className="relative w-full aspect-auto">
                             <Image
@@ -189,7 +189,7 @@ export default function CollaborationsPage() {
               className="relative max-w-5xl max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="rounded-xl overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2">
+              <div className="rounded-xl overflow-hidden  p-2">
                 <div className="relative rounded-lg overflow-hidden">
                   <Image
                     src={images[selectedImage] || "/placeholder.svg"}

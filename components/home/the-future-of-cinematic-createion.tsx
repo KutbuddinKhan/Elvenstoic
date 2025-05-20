@@ -128,14 +128,14 @@ export default function TheFutureContent() {
 
         {/* Bottom Text Section */}
         <div className="future-bottom-text mt-16 md:mt-20 text-center space-y-4 max-w-2xl mx-auto">
-          <p className="text-lg md:text-xl font-medium text-blue-300">
+          <p className="text-lg md:text-xl font-medium text-white">
             This isn't just about making your content look slightly better.
           </p>
-          <p className="text-lg md:text-xl font-medium text-blue-300/90">
+          <p className="text-lg md:text-xl font-medium text-white">
             It's about creating posts that{" "}
             <span className="text-white font-semibold">demand attention</span>.
           </p>
-          <p className="text-lg md:text-xl font-medium text-blue-300/80">
+          <p className="text-lg md:text-xl font-medium text-white">
             Content that builds real followings. Brands that last.
           </p>
         </div>
