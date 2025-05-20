@@ -87,7 +87,7 @@ export default function PricingSection() {
           {/* <h2 className="pricing-titletext-3xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase text-white">
              Value Stack <span className="text-gradient">&</span> Offer
           </h2> */}
-          <p className="mt-4 text-xl text-purple font-bold">NOW ONLY €147</p>
+          <p className="mt-4 text-xl text-purple font-bold">NOW ONLY €127</p>
           <p className="mt-2 text-muted-foreground">
             UNLOCK LIFETIME ACCESS NOW
           </p>
@@ -113,7 +113,7 @@ export default function PricingSection() {
                   <p className="text-sm text-muted-foreground">
                     One-Time Payment
                   </p>
-                  <p className="text-3xl font-bold text-purple">€147</p>
+                  <p className="text-3xl font-bold text-purple">€127</p>
                 </div>
               </div>
 
@@ -145,7 +145,7 @@ export default function PricingSection() {
                       size="lg"
                       className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
                     >
-                      JOIN CINEMATIC STUDIO NOW - €147
+                      JOIN CINEMATIC STUDIO NOW - €127
                     </Button>
                   </a>
                 </motion.div>

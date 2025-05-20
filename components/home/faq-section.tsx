@@ -147,7 +147,7 @@ export default function FaqSection() {
                     <div className="flex flex-col">
                       <span>Join Cinematic Studio</span>
                       <span className="text-sm font-normal mt-1 opacity-90">
-                        One-time payment of €147
+                        One-time payment of €127
                       </span>
                     </div>
                   </Button>
