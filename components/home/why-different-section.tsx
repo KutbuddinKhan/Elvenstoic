@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Check, Star, Zap } from "lucide-react";
 
 export default function WhyDifferentSection() {
