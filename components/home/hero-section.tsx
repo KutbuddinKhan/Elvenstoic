@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
-import LaunchCountdown from "./countdown/LaunchCountdown";
-import CountdownTimer from "./countdown/countdown-timer";
 
 declare global {
   interface Window {

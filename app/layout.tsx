@@ -7,6 +7,7 @@ import Footer from "@/components/layout/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import CookieConsent from "@/components/cookie-consent"
 import TimerPopup from "@/components/home/countdown/TimerPopup"
+import AnnouncementBar from "@/components/home/countdown/announcement-bar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const poppins = Poppins({
@@ -41,10 +42,22 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <div className="relative flex min-h-screen flex-col bg-background">
-            <Header />
-            <main className="flex-1">{children}</main>
+            {/* Fixed Announcement Bar */}
+            <AnnouncementBar className="fixed top-0 left-0 w-full z-50" />
+
+            {/* Adjust header position to be below the announcement bar with responsive spacing */}
+            <Header className="fixed top-12 md:top-14 w-full z-40" />
+
+            <main className="flex-1">
+              {/* Increase padding-top to main content to prevent overlap with fixed elements */}
+              <div className="pt-10 md:pt-10"> {/* Increased padding to account for announcement bar + header */}
+                {children}
+              </div>
+            </main>
+
             <Footer />
           </div>
+
           <CookieConsent />
           <TimerPopup />
         </ThemeProvider>
