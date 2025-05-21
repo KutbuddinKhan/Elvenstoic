@@ -28,7 +28,7 @@ const features = [
   "Instant Access To Cinematic Toolkit",
   "Instant Access To AI Assistant Blueprint",
   "Access to Creator Community",
-  "BONUS: 90 day scale",
+  "BONUS: 90 day scale system",
   "Lifetime Updates & Priority Support",
 ];
 

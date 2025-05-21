@@ -6,6 +6,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import CookieConsent from "@/components/cookie-consent"
+import TimerPopup from "@/components/home/countdown/TimerPopup"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const poppins = Poppins({
@@ -45,6 +46,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <CookieConsent />
+          <TimerPopup />
         </ThemeProvider>
       </body>
     </html>

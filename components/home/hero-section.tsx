@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
+import LaunchCountdown from "./countdown/LaunchCountdown";
+import CountdownTimer from "./countdown/countdown-timer";
 
 declare global {
   interface Window {
@@ -18,6 +20,11 @@ export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+
+  // Set your sale end date (3 days from now)
+  const saleEndDate = new Date();
+  saleEndDate.setDate(saleEndDate.getDate() + 3);
 
   useEffect(() => {
     // Load Wistia script
@@ -101,7 +108,7 @@ export default function HeroSection() {
               </span>
             </h1>
             <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mr-8 ml-8">
-              The system behind Elevenstoic&apos;s 1M+ success  Now in your hands.
+              The system behind Elevenstoic&apos;s 1M+ success - now in your hands.
             </p>
           </div>
 
@@ -182,29 +189,10 @@ export default function HeroSection() {
             </div>
           </div>
 
+          {/* Countdown */}
+          {/* <CountdownTimer saleEndDate={saleEndDate} /> */}
+
           {/* CTA Button */}
-
-          {/* Old version */}
-          {/* <div className="mt-6 md:mt-8">
-            <Button
-              size="lg"
-              className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Get Instant Access →
-            </Button>
-          </div> */}
-
-          {/* <div className="mt-6 md:mt-8">
-            <Button
-              size="lg"
-              className="text-base font-bold px-8 py-4 md:py-5 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 
-               shadow-blue-500/40 hover:shadow-blue-500/70"
-            >
-              Unlock Your System Now →
-            </Button>
-            <span>Instant delivery. No subscriptions.</span>
-          </div> */}
-
           <div className="flex justify-center mt-8">
             <motion.div
               whileHover={{ scale: 1.05 }}
