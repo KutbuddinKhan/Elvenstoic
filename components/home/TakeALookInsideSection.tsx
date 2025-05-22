@@ -22,7 +22,7 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
     if (!sliderRef.current) return;
 
     setIsTransitioning(true);
-    
+
     gsap.to(sliderRef.current, {
       x: `-${currentSlide * 100}%`,
       duration: 0.7,
@@ -60,20 +60,29 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
       </div>
 
       {/* New Image Section */}
-      <div className="relative z-10 max-w-4xl mx-auto mb-12">
-        <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-blue-900/40 border border-blue-800/30 bg-gradient-to-br from-slate-900/95 to-slate-950/95 backdrop-blur-sm">
-          {/* Aspect ratio container for square image */}
-          <div className="relative w-full aspect-square max-h-96 md:max-h-112 lg:max-h-128">
-            <Image
-              src="/money/IMG_5566.jpg"
-              alt="Investment Image"
-              fill
-              className="object-cover rounded-2xl"
-              priority={true}
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
-            />
-            {/* Subtle overlay for better text readability if needed */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent rounded-2xl"></div>
+      <div className="relative z-10 max-w-5xl mx-auto mb-12 px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-blue-900/40 border border-blue-800/30 bg-gradient-to-br from-slate-900/95 to-slate-950/95 backdrop-blur-sm p-2">
+          {/* Aspect ratio container matching 1350x1080 (5:4) */}
+          <div className="relative w-full aspect-[5/4]">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Image
+                src="/money/money screens.png"
+                alt="Investment Image"
+                width={1350}
+                height={1080}
+                className="object-contain rounded-lg"
+                priority={true}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '1350px',
+                  maxHeight: '1080px'
+                }}
+              />
+            </div>
+            {/* Subtle overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent rounded-lg"></div>
           </div>
         </div>
       </div>
@@ -172,17 +181,16 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
             <button
               key={idx}
               onClick={() => !isTransitioning && setCurrentSlide(idx)}
-              className={`h-3 rounded-full transition-all duration-300 hover:scale-110 ${
-                currentSlide === idx
+              className={`h-3 rounded-full transition-all duration-300 hover:scale-110 ${currentSlide === idx
                   ? "bg-blue-500 w-10 shadow-lg shadow-blue-500/30"
                   : "bg-blue-500/30 hover:bg-blue-500/60 w-3"
-              }`}
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
       </div>
-      
+
     </section>
   );
 };

@@ -66,8 +66,8 @@ export default function InlineTimer() {
                     </p>
                     <div className="flex items-center gap-2">
                         <AlertTriangle size={14} className="text-yellow-400" />
-                        <p className="text-yellow-400 font-semibold text-xs">
-                            Secure your lifetime access before the price increases — forever.
+                        <p className="text-yellow-400 font-semibold text-[10px] leading-3 sm:text-[11px] sm:leading-4 md:text-xs">
+                            Secure your lifetime access before the price increases forever.
                         </p>
                     </div>
                 </div>
