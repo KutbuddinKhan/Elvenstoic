@@ -78,7 +78,7 @@ export default function HeroSection() {
           <div className="mb-6 -mt-16 md:-mt-24">
             <InlineTimer />
           </div>
-          
+
           {/* Badge */}
           <div className="flex flex-col items-center justify-center mb-2 md:mb-3">
             {/* old badge */}
@@ -213,7 +213,7 @@ export default function HeroSection() {
                   size="lg"
                   className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
                 >
-                  Unlock Your System Now →
+                  Join Before the Price Increases →
                 </Button>
               </a>
             </motion.div>

@@ -61,28 +61,17 @@ export default function InlineTimer() {
                 </div> */}
 
                 <div className="flex flex-col items-center gap-1">
-                    <p className="text-blue-100 font-medium text-sm max-w-md">
-                        Secure <span className="font-bold text-white">lifetime access</span> for the <span className="text-yellow-400 font-bold">lowest price ever</span>
+                    <p className="text-white font-medium text-sm max-w-md">
+                        Cinematic Studio has just been upgraded.
                     </p>
                     <div className="flex items-center gap-2">
                         <AlertTriangle size={14} className="text-yellow-400" />
                         <p className="text-yellow-400 font-semibold text-xs">
-                            Price goes up permanently when timer hits zero
+                            Secure your lifetime access before the price increases — forever.
                         </p>
                     </div>
                 </div>
             </div>
-
-            {/* Price Display */}
-            {/* <div className="text-center mb-0">
-                <div className="flex items-center justify-center gap-2">
-                    <span className="text-2xl md:text-3xl font-bold text-white -mt-2">€127</span>
-                    <span className="text-lg line-through text-gray-400">€147</span>
-                </div>
-                <p className="text-xs text-gray-400 mt-1">
-                    Lifetime access - Price increases permanently after offer ends
-                </p>
-            </div> */}
 
             {/* Timer Display */}
             <div className="flex justify-center gap-2 items-baseline">

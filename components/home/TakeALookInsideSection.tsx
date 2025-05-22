@@ -60,19 +60,20 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
       </div>
 
       {/* New Image Section */}
-      <div className="relative z-10 max-w-7xl mx-auto mb-12">
-        <div className="relative overflow-hidden rounded-xl shadow-2xl shadow-blue-900/30 border border-blue-800/30">
-          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-sm">
+      <div className="relative z-10 max-w-4xl mx-auto mb-12">
+        <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-blue-900/40 border border-blue-800/30 bg-gradient-to-br from-slate-900/95 to-slate-950/95 backdrop-blur-sm">
+          {/* Aspect ratio container for square image */}
+          <div className="relative w-full aspect-square max-h-96 md:max-h-112 lg:max-h-128">
             <Image
               src="/money/IMG_5566.jpg"
               alt="Investment Image"
               fill
-              className="object-cover"
+              className="object-cover rounded-2xl"
               priority={true}
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 70vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
             />
-            {/* Glove effect behind the image */}
-            <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+            {/* Subtle overlay for better text readability if needed */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent rounded-2xl"></div>
           </div>
         </div>
       </div>
@@ -87,40 +88,45 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
         </p>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Main slider container */}
-        <div className="relative overflow-hidden rounded-xl shadow-2xl shadow-blue-900/30 border border-blue-800/30">
-          <div
-            ref={sliderRef}
-            className="flex slider-transition"
-          >
-            {images.map((image, idx) => (
-              <div
-                key={idx}
-                className="flex-shrink-0 w-full"
-              >
-                <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-sm">
-                  <Image
-                    src={image}
-                    alt={`Screenshot ${idx + 1}`}
-                    fill
-                    className="object-contain"
-                    priority={idx === 0}
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 70vw"
-                  />
+      {/* Professional Square Image Slider */}
+      <div className="relative z-10 max-w-4xl mx-auto">
+        {/* Main slider container with proper aspect ratio */}
+        <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-blue-900/40 border border-blue-800/30 bg-gradient-to-br from-slate-900/95 to-slate-950/95 backdrop-blur-sm">
+          {/* Square aspect ratio container */}
+          <div className="relative w-full aspect-square">
+            <div
+              ref={sliderRef}
+              className="flex h-full slider-transition"
+            >
+              {images.map((image, idx) => (
+                <div
+                  key={idx}
+                  className="flex-shrink-0 w-full h-full flex items-center justify-center p-4 md:p-6 lg:p-8"
+                >
+                  {/* Image container with perfect square aspect ratio */}
+                  <div className="relative w-full h-full max-w-full max-h-full">
+                    <Image
+                      src={image}
+                      alt={`Screenshot ${idx + 1}`}
+                      fill
+                      className="object-contain rounded-xl"
+                      priority={idx === 0}
+                      sizes="(max-width: 640px) 90vw, (max-width: 768px) 70vw, 50vw"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Navigation arrows - larger on desktop, positioned on sides */}
+          {/* Enhanced Navigation arrows - Made smaller */}
           <button
             onClick={handlePrevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-slate-900/70 hover:bg-blue-900/70 text-blue-300 transition-colors border border-blue-500/30 backdrop-blur-sm z-10"
+            className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-blue-900/80 text-blue-300 hover:text-white transition-all duration-300 border border-blue-500/30 backdrop-blur-sm z-10 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             aria-label="Previous slide"
           >
             <svg
-              className="w-5 h-5 sm:w-6 sm:h-6"
+              className="w-4 h-4 md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -128,7 +134,7 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
+                strokeWidth={2.5}
                 d="M15 19l-7-7 7-7"
               />
             </svg>
@@ -136,11 +142,11 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
 
           <button
             onClick={handleNextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-slate-900/70 hover:bg-blue-900/70 text-blue-300 transition-colors border border-blue-500/30 backdrop-blur-sm z-10"
+            className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-blue-900/80 text-blue-300 hover:text-white transition-all duration-300 border border-blue-500/30 backdrop-blur-sm z-10 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             aria-label="Next slide"
           >
             <svg
-              className="w-5 h-5 sm:w-6 sm:h-6"
+              className="w-4 h-4 md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -148,23 +154,28 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
+                strokeWidth={2.5}
                 d="M9 5l7 7-7 7"
               />
             </svg>
           </button>
+
+          {/* Slide counter overlay */}
+          <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-sm border border-blue-500/30 text-blue-200 text-sm font-medium">
+            {currentSlide + 1} / {images.length}
+          </div>
         </div>
 
-        {/* Slide indicators */}
-        <div className="flex justify-center items-center mt-6 gap-2">
+        {/* Enhanced slide indicators */}
+        <div className="flex justify-center items-center mt-8 gap-3">
           {images.map((_, idx) => (
             <button
               key={idx}
               onClick={() => !isTransitioning && setCurrentSlide(idx)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
+              className={`h-3 rounded-full transition-all duration-300 hover:scale-110 ${
                 currentSlide === idx
-                  ? "bg-blue-500 w-8"
-                  : "bg-blue-500/30 hover:bg-blue-500/50 w-2.5"
+                  ? "bg-blue-500 w-10 shadow-lg shadow-blue-500/30"
+                  : "bg-blue-500/30 hover:bg-blue-500/60 w-3"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
