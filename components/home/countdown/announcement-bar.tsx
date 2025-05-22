@@ -58,7 +58,7 @@ export default function AnnouncementBar({ className = "" }: AnnouncementBarProps
                             {/* Mobile version (extremely compact) */}
                             <div className="flex items-center gap-1 sm:hidden">
                                 <span className="font-bold text-yellow-400 text-sm">
-                                    {daysLeft === 0 ? "FINAL HOURS!" : `${daysLeft}D LEFT!`}
+                                    {daysLeft === 0 ? "FINAL HOURS!" : `${daysLeft} DAY LEFT!`}
                                 </span>
                                 <span className="font-bold text-white text-sm">Cinematic Studio</span>
                                 <span className="font-bold text-yellow-400 text-sm">€127</span>

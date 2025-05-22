@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
+import InlineTimer from "./countdown/inline-timer";
 
 declare global {
   interface Window {
@@ -72,6 +73,12 @@ export default function HeroSection() {
 
       <div className="container mt-20 md:mt-40 relative z-10 px-4 md:px-6 flex flex-col items-center py-8 md:py-0">
         <div className="max-w-4xl mx-auto text-center">
+
+          {/* Timer Component - Above Badge */}
+          <div className="mb-6 -mt-16 md:-mt-24">
+            <InlineTimer />
+          </div>
+          
           {/* Badge */}
           <div className="flex flex-col items-center justify-center mb-2 md:mb-3">
             {/* old badge */}

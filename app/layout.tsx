@@ -43,23 +43,24 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <div className="relative flex min-h-screen flex-col bg-background">
             {/* Fixed Announcement Bar */}
-            <AnnouncementBar className="fixed top-0 left-0 w-full z-50" />
+            {/* <AnnouncementBar className="fixed top-0 left-0 w-full z-50" /> */}
 
             {/* Adjust header position to be below the announcement bar with responsive spacing */}
-            <Header className="fixed top-12 md:top-14 w-full z-40" />
+            <Header  />
 
             <main className="flex-1">
               {/* Increase padding-top to main content to prevent overlap with fixed elements */}
-              <div className="pt-10 md:pt-10"> {/* Increased padding to account for announcement bar + header */}
+              {/* <div className="pt-10 md:pt-10">  */}
+                {/* Increased padding to account for announcement bar + header */}
                 {children}
-              </div>
+              {/* </div> */}
             </main>
 
             <Footer />
           </div>
 
           <CookieConsent />
-          <TimerPopup />
+          {/* <TimerPopup /> */}
         </ThemeProvider>
       </body>
     </html>
