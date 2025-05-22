@@ -48,7 +48,36 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-600 rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-indigo-700 rounded-full filter blur-3xl"></div>
       </div>
-      
+
+      {/* New Heading and Subheading */}
+      <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+          Make Your Investment Back
+        </h1>
+        <p className="text-lg md:text-xl text-blue-100/80 max-w-2xl mx-auto">
+          This course teaches editing and strategies to monetize your skills.
+        </p>
+      </div>
+
+      {/* New Image Section */}
+      <div className="relative z-10 max-w-7xl mx-auto mb-12">
+        <div className="relative overflow-hidden rounded-xl shadow-2xl shadow-blue-900/30 border border-blue-800/30">
+          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-sm">
+            <Image
+              src="/money/IMG_5566.jpg"
+              alt="Investment Image"
+              fill
+              className="object-cover"
+              priority={true}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 70vw"
+            />
+            {/* Glove effect behind the image */}
+            <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Existing "Take a Look Inside" Section */}
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 md:mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
           Take a Look <span className="text-white">Inside</span>
@@ -141,11 +170,6 @@ const TakeALookInsideSection: React.FC<TakeALookInsideSectionProps> = ({ images 
             />
           ))}
         </div>
-        
-        {/* Current slide indicator */}
-        {/* <div className="text-center mt-4 text-blue-300/70">
-          <span>{currentSlide + 1} / {images.length}</span>
-        </div> */}
       </div>
       
     </section>
