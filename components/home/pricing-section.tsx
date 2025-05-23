@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
+import InlineTimer from "./countdown/inline-timer";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -83,6 +84,10 @@ export default function PricingSection() {
       {/* <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div> */}
 
       <div className="container px-4 md:px-6 relative z-10">
+        {/* Timer Component - Above Badge */}
+        <div className="mb-6 -mt-16 md:-mt-24">
+          <InlineTimer />
+        </div>
         <div className="text-center mb-16">
           {/* <h2 className="pricing-titletext-3xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase text-white">
              Value Stack <span className="text-gradient">&</span> Offer

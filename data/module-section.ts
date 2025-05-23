@@ -72,7 +72,7 @@ export const modules = [
     features: [
       "Build and monetize a newsletter that turns followers into customers",
       "Create digital products your audience wants",
-      "Generate passive income through affiliate marketing",
+      "Make money from Day 1 With Affiliate Marketing",
       "Attract brand deals and sponsorships",
       "Offer premium services based on your expertise",
     ],
@@ -117,9 +117,8 @@ export const modules = [
       "Your roadmap to grow, delegate & operate like a real content business. Unlock the exact strategy I'd follow if I had to start from scratch today – broken down into a clear 90-day action plan.",
     image: "/images/Bonus Thumbnail.png",
     features: [
-      "In-Depth Strategy Presentation (video-based)",
+      "In-Depth 90 Day Strategy Training (Video)",
       "The 90-Day PDF Blueprint",
-      "My Delegation Blueprint (how I outsourced editing & scaled output)",
     ],
     assets: ["VIDEOS", "PDF", "TEMPLATES"],
     note: "This bonus is included for a limited time - and only available inside this version of Cinematic Studio.",

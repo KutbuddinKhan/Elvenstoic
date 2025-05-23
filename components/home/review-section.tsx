@@ -455,7 +455,7 @@ export default function ReviewSection() {
       </div>
 
       {/* Take a Look Inside */}
-      <TakeALookInsideSection images={["take-look-section/1. have a look 2.PNG", "take-look-section/2. 2Have a look 2.PNG", "take-look-section/3. Have a look 2.PNG", "take-look-section/4. have a look inside 2.PNG", "take-look-section/5. Have a look 2.PNG", "take-look-section/6. Have a look 2.PNG"]} />
+      <TakeALookInsideSection images={["take-look-section/1. have a look 2.PNG", "take-look-section/2. 2Have a look 2.PNG", "take-look-section/3. Have a look 2.PNG", "take-look-section/4. have a look inside 2.PNG", "take-look-section/Replace with slide 5.png", "take-look-section/Replace with slide 6.png"]} />
 
       {/* CTA button */}
       {/* <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
