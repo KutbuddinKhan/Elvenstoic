@@ -14,9 +14,9 @@ export default function InlineTimer() {
 
     useEffect(() => {
         // Start date: Wednesday, May 28th, 2025 at 5pm CET
-        const startDate = new Date('2025-05-28T17:00:00+02:00');
+        const startDate = new Date('2025-05-28T15:00:00+02:00');
         // End date: Saturday, May 31st, 2025 at 5pm CET  
-        const endDate = new Date('2025-05-31T17:00:00+02:00');
+        const endDate = new Date('2025-05-31T15:00:00+02:00');
 
         // const startDate = new Date('2025-05-22T17:00:00+05:30');  // May 23rd, 2025, 5pm IST
         // const endDate = new Date('2025-05-23T17:00:00+05:30');    // May 24th, 2025, 5pm IST
