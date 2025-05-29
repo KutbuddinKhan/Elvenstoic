@@ -16,13 +16,13 @@ declare global {
   }
 }
 
+// Custom thumbnail URL from performance analysis
+const CUSTOM_THUMBNAIL_URL = "https://embed-ssl.wistia.com/deliveries/dcf03ea4f7d6be7c5d828bedd9066565e75fcf6d.webp?image_crop_resized=1920x1080";
+
 export default function HeroSection() {
-  const sectionRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
-  const [videoClicked, setVideoClicked] = useState(false);
   const videoInitialized = useRef(false);
 
   // Set your sale end date (3 days from now)
@@ -32,30 +32,26 @@ export default function HeroSection() {
   // Optimized image preloading
   const preloadImages = useCallback(() => {
     const imagePromises = Array.from({ length: 4 }, (_, i) => {
-      return new Promise<void>((resolve, reject) => {
+      return new Promise<void>((resolve) => {
         const img = new window.Image();
         img.onload = () => resolve();
-        img.onerror = () => {
-          console.error(`Failed to load image: avatar${i + 1}.jpg`);
-          resolve(); // Continue even if image fails
-        };
+        img.onerror = () => resolve(); // Fail silently
         img.src = `/avatars/avatar${i + 1}.jpg`;
       });
     });
 
     Promise.allSettled(imagePromises).then(() => {
-      setImagesLoaded(true);
+      // Images are preloaded but we don't need state for this
     });
   }, []);
 
   // Load Wistia script only when needed
   const loadWistiaScript = useCallback(() => {
     if (scriptLoaded || document.querySelector('script[src*="wistia"]')) {
-      setScriptLoaded(true);
       return Promise.resolve();
     }
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve) => {
       const script = document.createElement("script");
       script.src = "//fast.wistia.com/assets/external/E-v1.js";
       script.async = true;
@@ -65,11 +61,7 @@ export default function HeroSection() {
         resolve();
       };
       
-      script.onerror = () => {
-        console.error("Failed to load Wistia script");
-        reject(new Error("Wistia script failed to load"));
-      };
-      
+      script.onerror = () => resolve(); // Fail silently
       document.head.appendChild(script);
     });
   }, [scriptLoaded]);
@@ -77,11 +69,6 @@ export default function HeroSection() {
   useEffect(() => {
     // Preload images immediately
     preloadImages();
-
-    // Cleanup function
-    return () => {
-      // Clean up any intervals or timeouts if needed
-    };
   }, [preloadImages]);
 
   const initializeVideo = useCallback(async () => {
@@ -99,18 +86,14 @@ export default function HeroSection() {
         attempts++;
       }
 
-      if (window._wq && window._wq.push) {
+      if (window._wq?.push) {
         window._wq.push({
           id: "mqzmf5kfct",
           onReady: (video) => {
             setVideoLoaded(true);
             videoInitialized.current = true;
-            
-            // Auto-play if user already clicked
-            if (videoClicked) {
-              video.play();
-              setIsPlaying(true);
-            }
+            video.play();
+            setIsPlaying(true);
           },
         });
       }
@@ -118,55 +101,15 @@ export default function HeroSection() {
       console.error("Error initializing video:", error);
       setVideoLoaded(true); // Show fallback state
     }
-  }, [videoClicked, loadWistiaScript]);
+  }, [loadWistiaScript]);
 
   const handleVideoPlay = useCallback(async () => {
-    setVideoClicked(true);
-    
-    if (!scriptLoaded) {
-      // Show loading state and initialize video
-      await initializeVideo();
-    } else if (window._wq && window._wq.push) {
-      window._wq.push({
-        id: "mqzmf5kfct",
-        onReady: (video) => {
-          video.play();
-          setIsPlaying(true);
-        },
-      });
-    }
-  }, [scriptLoaded, initializeVideo]);
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !videoInitialized.current) {
-            // Load video when section is visible
-            initializeVideo();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    setIsPlaying(true);
+    await initializeVideo();
   }, [initializeVideo]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative flex items-center justify-center overflow-hidden bg-slate-950"
-    >
+    <section className="relative flex items-center justify-center overflow-hidden bg-slate-950">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid opacity-5"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -199,24 +142,51 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Video Preview */}
+          {/* Video Preview with Custom Thumbnail */}
           <div className="mt-6 max-w-3xl mx-auto relative">
             <div className="rounded-xl overflow-hidden bg-black aspect-video">
-              {(!videoLoaded || !scriptLoaded) && (
-                <div className="absolute inset-0 bg-slate-900/90 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-blue-600/70 flex items-center justify-center animate-pulse">
-                    <Play className="h-8 w-8 text-white" aria-hidden="true" />
-                  </div>
-                  {videoClicked && !scriptLoaded && (
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                      <div className="text-xs text-white/70">Loading video...</div>
+              <div className="w-full h-full relative">
+                {/* Custom Thumbnail - Optimized with Next.js Image */}
+                {!isPlaying && (
+                  <div className="absolute inset-0 w-full h-full">
+                    <Image
+                      src={CUSTOM_THUMBNAIL_URL}
+                      alt="Video Thumbnail"
+                      layout="fill"
+                      objectFit="cover"
+                      unoptimized
+                      priority
+                      className="select-none"
+                    />
+                    <div 
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer group z-10"
+                      onClick={handleVideoPlay}
+                      aria-label="Play video"
+                    >
+                      <div className="relative flex items-center justify-center">
+                        <div className="absolute w-20 h-20 bg-blue-600/30 rounded-full animate-ping opacity-50"></div>
+                        <div className="relative w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Play
+                            className="h-8 w-8 text-white ml-1"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              )}
-              <div className="w-full h-full">
-                <div
-                  className="wistia_responsive_padding"
+                  </div>
+                )}
+                
+                {/* Loading State */}
+                {isPlaying && !videoLoaded && (
+                  <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-20">
+                    <div className="w-16 h-16 rounded-full bg-blue-600/70 flex items-center justify-center animate-pulse">
+                      <Play className="h-8 w-8 text-white" />
+                    </div>
+                  </div>
+                )}
+                
+                {/* Wistia Embed Container */}
+                <div className="wistia_responsive_padding"
                   style={{
                     padding: "56.25% 0 0 0",
                     position: "relative",
@@ -239,26 +209,9 @@ export default function HeroSection() {
                         height: "100%",
                         position: "relative",
                         width: "100%",
+                        visibility: videoLoaded ? "visible" : "hidden"
                       }}
-                    >
-                      {!isPlaying && (
-                        <div
-                          className="absolute inset-0 flex items-center justify-center cursor-pointer group z-10"
-                          onClick={handleVideoPlay}
-                          aria-label="Play video"
-                        >
-                          <div className="relative flex items-center justify-center">
-                            <div className="absolute w-20 h-20 bg-blue-600/30 rounded-full animate-ping opacity-50"></div>
-                            <div className="relative w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                              <Play
-                                className="h-8 w-8 text-white ml-1"
-                                aria-hidden="true"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -291,25 +244,22 @@ export default function HeroSection() {
 
           {/* Social Proof */}
           <div className="flex flex-col items-center space-y-4 mt-5">
-            {/* Avatar Stack with Enhanced Interaction */}
+            {/* Avatar Stack */}
             <div className="flex -space-x-3 relative group">
               {[1, 2, 3, 4].map((i) => (
                 <motion.div
                   key={i}
-                  className={`relative w-9 h-9 rounded-full border-2 border-white/20 shadow-lg ${imagesLoaded ? "" : "bg-slate-800 animate-pulse"
-                    }`}
+                  className="relative w-9 h-9 rounded-full border-2 border-white/20 shadow-lg bg-slate-800"
                   whileHover={{ scale: 1.1, zIndex: 10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {imagesLoaded && (
-                    <img
-                      src={`/avatars/avatar${i}.jpg`}
-                      alt={`User ${i}`}
-                      className="w-full h-full rounded-full object-cover transform transition-transform duration-300 group-hover:scale-110"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
+                  <img
+                    src={`/avatars/avatar${i}.jpg`}
+                    alt={`User ${i}`}
+                    className="w-full h-full rounded-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </motion.div>
               ))}
               <div className="w-9 h-9 rounded-full border-2 border-white/20 bg-gradient-to-br from-blue-600 to-purple-500 flex items-center justify-center text-xs font-bold text-white shadow-lg">
@@ -317,7 +267,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Rating Section with Animated Stars */}
+            {/* Rating Section */}
             <div className="flex flex-col items-center space-y-2">
               <div className="flex items-center gap-1.5 -mt-2">
                 {[...Array(5)].map((_, i) => (
