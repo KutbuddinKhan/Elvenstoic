@@ -16,8 +16,6 @@ declare global {
   }
 }
 
-// Custom thumbnail URL from performance analysis
-const CUSTOM_THUMBNAIL_URL = "https://embed-ssl.wistia.com/deliveries/dcf03ea4f7d6be7c5d828bedd9066565e75fcf6d.webp?image_crop_resized=1920x1080";
 
 export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -150,7 +148,7 @@ export default function HeroSection() {
                 {!isPlaying && (
                   <div className="absolute inset-0 w-full h-full">
                     <Image
-                      src={CUSTOM_THUMBNAIL_URL}
+                      src="/video-thumbnail.webp"
                       alt="Video Thumbnail"
                       layout="fill"
                       objectFit="cover"
@@ -227,7 +225,7 @@ export default function HeroSection() {
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
               <a
-                href="https://copecart.com/products/e41a84c4/checkout"
+                href="https://copecart.com/products/c6f1ba46/checkout"
                 target="_blank"
                 rel="noopener noreferrer"
               >

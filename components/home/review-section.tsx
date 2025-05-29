@@ -457,35 +457,7 @@ export default function ReviewSection() {
       {/* Take a Look Inside */}
       <TakeALookInsideSection images={["take-look-section/1. have a look 2.PNG", "take-look-section/2. 2Have a look 2.PNG", "take-look-section/3. Have a look 2.PNG", "take-look-section/4. have a look inside 2.PNG", "take-look-section/Replace with slide 5.png", "take-look-section/Replace with slide 6.png"]} />
 
-      {/* CTA button */}
-      {/* <div className="relative z-10 mt-10 md:mt-14 text-center px-4 sm:px-0">
-        <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-
-            <a
-              href="https://copecart.com/products/e41a84c4/checkout"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold px-8 py-6 border border-blue-700/50"
-              >
-                Get The Blueprint Now →
-              </Button>
-            </a>
-          </motion.div>
-
-          <span className="text-sm text-blue-200 font-medium tracking-wide">
-            Get Ahead in Just 6 Hours
-          </span>
-        </div>
-      </div> */}
+      
 
         <CTASection />
     </section>
