@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import InlineTimer from "./countdown/inline-timer";
 
 declare global {
@@ -11,6 +12,7 @@ declare global {
     _wq?: {
       push?: (args: { id: string; onReady: (video: any) => void }) => void;
     };
+    Wistia?: any;
   }
 }
 
@@ -19,36 +21,112 @@ export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [videoClicked, setVideoClicked] = useState(false);
+  const videoInitialized = useRef(false);
 
   // Set your sale end date (3 days from now)
   const saleEndDate = new Date();
   saleEndDate.setDate(saleEndDate.getDate() + 3);
 
-  useEffect(() => {
-    // Load Wistia script
-    const script = document.createElement("script");
-    script.src = "//fast.wistia.com/assets/external/E-v1.js";
-    script.async = true;
-    document.body.appendChild(script);
+  // Optimized image preloading
+  const preloadImages = useCallback(() => {
+    const imagePromises = Array.from({ length: 4 }, (_, i) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new window.Image();
+        img.onload = () => resolve();
+        img.onerror = () => {
+          console.error(`Failed to load image: avatar${i + 1}.jpg`);
+          resolve(); // Continue even if image fails
+        };
+        img.src = `/avatars/avatar${i + 1}.jpg`;
+      });
+    });
 
-    // Simulate image loading delay
-    const timer = setTimeout(() => {
+    Promise.allSettled(imagePromises).then(() => {
       setImagesLoaded(true);
-    }, 1500);
-
-    return () => {
-      document.body.removeChild(script);
-      clearTimeout(timer);
-    };
+    });
   }, []);
 
-  const handleVideoLoad = () => {
-    setVideoLoaded(true);
-  };
+  // Load Wistia script only when needed
+  const loadWistiaScript = useCallback(() => {
+    if (scriptLoaded || document.querySelector('script[src*="wistia"]')) {
+      setScriptLoaded(true);
+      return Promise.resolve();
+    }
 
-  const handleVideoPlay = () => {
-    if (window._wq && window._wq.push) {
+    return new Promise<void>((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "//fast.wistia.com/assets/external/E-v1.js";
+      script.async = true;
+      
+      script.onload = () => {
+        setScriptLoaded(true);
+        resolve();
+      };
+      
+      script.onerror = () => {
+        console.error("Failed to load Wistia script");
+        reject(new Error("Wistia script failed to load"));
+      };
+      
+      document.head.appendChild(script);
+    });
+  }, [scriptLoaded]);
+
+  useEffect(() => {
+    // Preload images immediately
+    preloadImages();
+
+    // Cleanup function
+    return () => {
+      // Clean up any intervals or timeouts if needed
+    };
+  }, [preloadImages]);
+
+  const initializeVideo = useCallback(async () => {
+    if (videoInitialized.current) return;
+    
+    try {
+      await loadWistiaScript();
+      
+      // Wait for Wistia to be available
+      let attempts = 0;
+      const maxAttempts = 50;
+      
+      while (!window._wq && attempts < maxAttempts) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+        attempts++;
+      }
+
+      if (window._wq && window._wq.push) {
+        window._wq.push({
+          id: "mqzmf5kfct",
+          onReady: (video) => {
+            setVideoLoaded(true);
+            videoInitialized.current = true;
+            
+            // Auto-play if user already clicked
+            if (videoClicked) {
+              video.play();
+              setIsPlaying(true);
+            }
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error initializing video:", error);
+      setVideoLoaded(true); // Show fallback state
+    }
+  }, [videoClicked, loadWistiaScript]);
+
+  const handleVideoPlay = useCallback(async () => {
+    setVideoClicked(true);
+    
+    if (!scriptLoaded) {
+      // Show loading state and initialize video
+      await initializeVideo();
+    } else if (window._wq && window._wq.push) {
       window._wq.push({
         id: "mqzmf5kfct",
         onReady: (video) => {
@@ -57,7 +135,32 @@ export default function HeroSection() {
         },
       });
     }
-  };
+  }, [scriptLoaded, initializeVideo]);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !videoInitialized.current) {
+            // Load video when section is visible
+            initializeVideo();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [initializeVideo]);
 
   return (
     <section
@@ -81,30 +184,9 @@ export default function HeroSection() {
 
           {/* Badge */}
           <div className="flex flex-col items-center justify-center mb-2 md:mb-3">
-            {/* old badge */}
-            {/* <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/30 border border-blue-800/50 backdrop-blur-sm px-4 py-1.5 text-sm about-title">
-              <span>HIGHLY RATED EDITING MASTERCLASS</span>
-            </div> */}
-
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/30 border border-blue-800/50 backdrop-blur-sm px-3.5 py-1 text-xs about-title">
               <span>HIGHLY RATED CREATOR SYSTEM</span>
             </div>
-
-            {/* Slight Grey */}
-
-            {/* <h1 className="about-title text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter uppercase mt-3 md:mt-4">
-              Build a Viral Brand That Grows,{" "}
-              <span className="text-gray-300/90 bg-clip-text bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300">
-                Sells & Looks Cinematic.
-              </span>
-            </h1>
-
-            <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mx-auto">
-              The exact system behind Elevenstoic's 1M+ followers – now in your
-              hands to grow, monetize and stand out as a one-man brand.
-            </p> */}
-
-            {/* Metallic tesxture */}
 
             <h1 className="about-title text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter uppercase mt-3 md:mt-4">
               Build a Viral Brand That Grows,{" "}
@@ -113,37 +195,26 @@ export default function HeroSection() {
               </span>
             </h1>
             <p className="about-subtitle mt-2 text-sm md:text-base text-blue-100/70 max-w-3xl mr-8 ml-8">
-              The system behind Elevenstoic&apos;s 1M+ success - now in your hands.
+              The system behind Elevenstoic's 1M+ success - now in your hands.
             </p>
           </div>
-
-          {/* Star Rating */}
-          {/* <div className="flex justify-center items-center gap-1 mt-3">
-            {[...Array(5)].map((_, i) => (
-              <svg
-                key={i}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="w-5 h-5 text-yellow-400"
-              >
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
-            ))}
-            <span className="ml-1 text-sm text-blue-200">4.9 (2,500+ Reviews)</span>
-          </div> */}
 
           {/* Video Preview */}
           <div className="mt-6 max-w-3xl mx-auto relative">
             <div className="rounded-xl overflow-hidden bg-black aspect-video">
-              {!videoLoaded && (
+              {(!videoLoaded || !scriptLoaded) && (
                 <div className="absolute inset-0 bg-slate-900/90 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-blue-600/70 flex items-center justify-center animate-pulse">
                     <Play className="h-8 w-8 text-white" aria-hidden="true" />
                   </div>
+                  {videoClicked && !scriptLoaded && (
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                      <div className="text-xs text-white/70">Loading video...</div>
+                    </div>
+                  )}
                 </div>
               )}
-              <div className="w-full h-full" onLoad={handleVideoLoad}>
+              <div className="w-full h-full">
                 <div
                   className="wistia_responsive_padding"
                   style={{
@@ -194,9 +265,6 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Countdown */}
-          {/* <CountdownTimer saleEndDate={saleEndDate} /> */}
-
           {/* CTA Button */}
           <div className="flex justify-center mt-8">
             <motion.div
@@ -208,6 +276,7 @@ export default function HeroSection() {
               <a
                 href="https://copecart.com/products/e41a84c4/checkout"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <Button
                   size="lg"
@@ -219,8 +288,6 @@ export default function HeroSection() {
             </motion.div>
           </div>
           <span className="block mt-2 italic -mb-3 text-sm md:text-base text-blue-100/70">Instant delivery. No subscriptions.</span>
-
-
 
           {/* Social Proof */}
           <div className="flex flex-col items-center space-y-4 mt-5">
@@ -240,6 +307,7 @@ export default function HeroSection() {
                       alt={`User ${i}`}
                       className="w-full h-full rounded-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                       loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </motion.div>
@@ -282,7 +350,6 @@ export default function HeroSection() {
                     Trusted by 500+ Brands
                   </span>
                 </div>
-
               </div>
             </div>
           </div>
