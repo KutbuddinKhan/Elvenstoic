@@ -152,8 +152,8 @@ export default function HeroSection() {
                       alt="Video Thumbnail"
                       layout="fill"
                       objectFit="cover"
-                      unoptimized
                       priority
+                      sizes="(max-width: 768px) 100vw, 640px"
                       className="select-none"
                     />
                     <div 
