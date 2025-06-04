@@ -137,7 +137,7 @@ export default function FaqSection() {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
                 <a
-                  href="https://copecart.com/products/e41a84c4/checkout"
+                  href="https://copecart.com/products/c6f1ba46/checkout"
                   target="_blank"
                 >
                   <Button

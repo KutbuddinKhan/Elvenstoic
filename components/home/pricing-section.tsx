@@ -85,9 +85,9 @@ export default function PricingSection() {
 
       <div className="container px-4 md:px-6 relative z-10">
         {/* Timer Component - Above Badge */}
-        <div className="mb-6 -mt-16 md:-mt-24">
+        {/* <div className="mb-6 -mt-16 md:-mt-24">
           <InlineTimer />
-        </div>
+        </div> */}
         <div className="text-center mb-16">
           {/* <h2 className="pricing-titletext-3xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase text-white">
              Value Stack <span className="text-gradient">&</span> Offer
@@ -143,7 +143,7 @@ export default function PricingSection() {
                 >
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
                   <a
-                    href="https://copecart.com/products/e41a84c4/checkout"
+                    href="https://copecart.com/products/c6f1ba46/checkout"
                     target="_blank"
                   >
                     <Button

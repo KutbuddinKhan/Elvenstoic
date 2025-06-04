@@ -148,7 +148,7 @@ export default function TimerPopup() {
                                 className="relative group inline-block"
                             >
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-                                <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank">
+                                <a href="https://copecart.com/products/c6f1ba46/checkout" target="_blank">
                                     <Button
                                         size="lg"
                                         className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold border border-blue-700/50 w-full"

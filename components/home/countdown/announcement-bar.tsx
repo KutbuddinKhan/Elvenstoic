@@ -81,7 +81,7 @@ export default function AnnouncementBar({ className = "" }: AnnouncementBarProps
                                 <span className="font-medium text-gray-300 line-through ml-1">€147</span>
                             </div>
                             
-                            <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank" className="flex items-center text-xs font-bold bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-2 sm:px-3 py-1 rounded-full transition-all group-hover:scale-105">
+                            <a href="https://copecart.com/products/c6f1ba46/checkout" target="_blank" className="flex items-center text-xs font-bold bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-2 sm:px-3 py-1 rounded-full transition-all group-hover:scale-105">
                                 <span className="sm:inline hidden">CLAIM OFFER</span>
                                 <span className="sm:hidden inline">BUY</span>
                                 <ChevronRight size={14} className="ml-1" />

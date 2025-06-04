@@ -323,7 +323,7 @@ export default function ModulesSection() {
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-500 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
               <a
-                href="https://copecart.com/products/e41a84c4/checkout"
+                href="https://copecart.com/products/c6f1ba46/checkout"
                 target="_blank"
               >
                 <Button

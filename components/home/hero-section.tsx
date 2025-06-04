@@ -53,12 +53,12 @@ export default function HeroSection() {
       const script = document.createElement("script");
       script.src = "//fast.wistia.com/assets/external/E-v1.js";
       script.async = true;
-      
+
       script.onload = () => {
         setScriptLoaded(true);
         resolve();
       };
-      
+
       script.onerror = () => resolve(); // Fail silently
       document.head.appendChild(script);
     });
@@ -71,14 +71,14 @@ export default function HeroSection() {
 
   const initializeVideo = useCallback(async () => {
     if (videoInitialized.current) return;
-    
+
     try {
       await loadWistiaScript();
-      
+
       // Wait for Wistia to be available
       let attempts = 0;
       const maxAttempts = 50;
-      
+
       while (!window._wq && attempts < maxAttempts) {
         await new Promise(resolve => setTimeout(resolve, 100));
         attempts++;
@@ -115,13 +115,13 @@ export default function HeroSection() {
         <div className="absolute bottom-1/3 left-1/3 w-64 h-64 bg-purple-800/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mt-20 md:mt-40 relative z-10 px-4 md:px-6 flex flex-col items-center py-8 md:py-0">
+      <div className="container mt-10 md:mt-40 relative z-10 px-4 md:px-6 flex flex-col items-center py-8 md:py-0">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Timer Component - Above Badge */}
-          <div className="mb-6 -mt-16 md:-mt-24">
+          {/* <div className="mb-6 -mt-16 md:-mt-24">
             <InlineTimer />
-          </div>
+          </div> */}
 
           {/* Badge */}
           <div className="flex flex-col items-center justify-center mb-2 md:mb-3">
@@ -150,13 +150,14 @@ export default function HeroSection() {
                     <Image
                       src="/video-thumbnail.webp"
                       alt="Video Thumbnail"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: 'cover' }}
                       priority
                       sizes="(max-width: 768px) 100vw, 640px"
                       className="select-none"
                     />
-                    <div 
+
+                    <div
                       className="absolute inset-0 flex items-center justify-center cursor-pointer group z-10"
                       onClick={handleVideoPlay}
                       aria-label="Play video"
@@ -173,7 +174,7 @@ export default function HeroSection() {
                     </div>
                   </div>
                 )}
-                
+
                 {/* Loading State */}
                 {isPlaying && !videoLoaded && (
                   <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-20">
@@ -182,7 +183,7 @@ export default function HeroSection() {
                     </div>
                   </div>
                 )}
-                
+
                 {/* Wistia Embed Container */}
                 <div className="wistia_responsive_padding"
                   style={{

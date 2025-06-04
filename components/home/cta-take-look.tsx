@@ -22,7 +22,7 @@ const CTASection: React.FC<CTASectionProps> = ({ className = "" }) => {
 
           {/* Actual button */}
           <a
-            href="https://copecart.com/products/e41a84c4/checkout"
+            href="https://copecart.com/products/c6f1ba46/checkout"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -86,7 +86,7 @@ export default function Header({ className = "" }: HeaderProps) {
             className="relative group ml-4"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-            <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank" rel="noopener noreferrer">
+            <a href="https://copecart.com/products/c6f1ba46/checkout" target="_blank" rel="noopener noreferrer">
               <Button
                 size="sm"
                 className="relative bg-gradient-to-r from-blue-700 to-blue-500 text-white font-bold border border-blue-600/50"
@@ -142,7 +142,7 @@ export default function Header({ className = "" }: HeaderProps) {
                 className="relative group"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-md blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
-                <a href="https://copecart.com/products/e41a84c4/checkout" target="_blank" rel="noopener noreferrer">
+                <a href="https://copecart.com/products/c6f1ba46/checkout" target="_blank" rel="noopener noreferrer">
                   <Button
                     className="w-full relative bg-gradient-to-r from-blue-700 to-blue-500 text-white font-bold border border-blue-600/50"
                     onClick={() => setIsOpen(false)}
